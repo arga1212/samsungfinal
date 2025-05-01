@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ modul.judul_modul }}</title>
+</head>
+<body>
+    <h1>{{ modul.judul_modul }}</h1>
+    <p><strong>Deskripsi:</strong> {{ modul.deskripsi_singkat }}</p>
+
+    {% for bab in modul.Bab %}
+        <h2>{{ bab.Sub_Bab }}</h2>
+        <p>{{ bab.isi | safe }}</p>
+    {% endfor %}
+
+    <h3>Rangkuman:</h3>
+    <p>{{ modul.rangkuman }}</p>
+
+    <a href="{{ url_for('upload.view_transkrip', transkrip_id=transkrip.id) }}">Kembali ke Transkrip</a>
+</body>
+</html>

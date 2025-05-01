@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rangkuman Transkrip</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Rangkuman Transkrip</h1>
+        <h1>hai {{ session['username'] }}</h1>
+        <h3>Nama File: {{ transkrip.name }}</h3>
+        <p><strong>Teks Transkrip:</strong></p>
+        <div style="background-color: #f9f9f9; padding: 1em; border-radius: 8px; margin-bottom: 1em;">
+            <pre>{{ transkrip.teks }}</pre>
+        </div>
+
+        <form method="post">
+            <button type="submit">Buat Rangkuman</button>
+        </form>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul class="flashes">
+              {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    </div>
+
+    <h1>Rangkuman dari Transkrip: {{ transkrip.judul }}</h1>
+    
+    <h2>Hasil Rangkuman:</h2>
+    <pre>{{ summary.data_summary }}</pre>
+</body>
+</html>
